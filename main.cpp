@@ -1,4 +1,5 @@
 #include "raylib.h"
+#include <raymath.h>
 
 int main()
 {
@@ -11,20 +12,34 @@ int main()
 
   // load map texture
   Texture2D gameMap = LoadTexture("nature_tileset/OpenWorldMap.png");
+  Vector2 gmPos{0.0, 0.0};
   float gmX{};
+  float speed{4.0};
 
   SetTargetFPS(60);
 
   while (!WindowShouldClose())
-  {
+  { 
     const float dT(GetFrameTime());
 
     BeginDrawing();
 
     ClearBackground(WHITE);
 
+    Vector2 direction{};
+    if (IsKeyDown(KEY_A)) direction.x -= 1.0;
+    if (IsKeyDown(KEY_D)) direction.x += 1.0;
+    if (IsKeyDown(KEY_W)) direction.y -= 1.0;
+    if (IsKeyDown(KEY_S)) direction.y += 1.0;
+
+    
+    if (Vector2Length(direction) != 0.0)
+    {
+      // set map pos = gmPos - direction
+      gmPos = Vector2Subtract(gmPos, Vector2Scale(Vector2Normalize(direction), speed));
+    }
+
     // draw the map
-    Vector2 gmPos{0.0, 0.0};
     DrawTextureEx(gameMap, gmPos, 0.0, 4.0, WHITE);
 
     EndDrawing();
