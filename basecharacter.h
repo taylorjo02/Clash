@@ -9,6 +9,7 @@ public:
   Vector2 getWorldPos() { return worldPos; }
   void undoMovement();
   Rectangle getCollisionRec();
+  virtual void tick(float deltaTime);
 private:
 
 protected:
