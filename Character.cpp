@@ -1,4 +1,4 @@
-#include "Character.h"
+#include "character.h"
 #include "raymath.h"
 
 Character::Character(int winWidth, int winHeight)

@@ -1,4 +1,4 @@
-#include "Enemy.h"
+#include "enemy.h"
 
 Enemy::Enemy(Vector2 pos, Texture2D idle_texture, Texture2D run_texture) :
   worldPos(pos),
