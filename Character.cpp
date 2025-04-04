@@ -67,3 +67,12 @@ void Character::tick(float deltaTime)
 
   DrawTexturePro(weapon, source, dest, origin, rotation, WHITE);
 }
+
+void Character::takeDamage(float damage)
+{
+  health -= damage;
+  if (health <= 0)
+  {
+    setAlive(false);
+  }
+}
